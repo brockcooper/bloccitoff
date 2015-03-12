@@ -1,0 +1,49 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Blocitoff</h1>
+        <p>Get your most important tasks done without wading through the junk. Create the most effective To Do lists the web has to offer.</p>
+        <!--  <p><%= link_to "Sign Up", welcome_index_path, class: "btn btn-primary btn-lg", role: "button"  %></p> -->
+      </div>
+      <div class="col-md-5">
+            <br>
+            <%= form_for(welcome_index_path) do |f| %>
+              <div class="form-group">
+                <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Enter Username" %>
+              </div>
+              <div class="form-group">
+                <%= f.email_field :email, class: 'form-control', placeholder: "Enter Email" %>
+              </div>
+              <div class="form-group">
+                <%= f.password_field :password, class: 'form-control', placeholder: "Enter Password" %>
+              </div>
+              <div class="form-group">
+                <%= f.submit "Sign up for Bloccitoff", class: 'btn btn-primary btn-lg col-md-12' %>
+              </div>
+              <div class="form-group">
+              </div>
+            <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Get Things Done</h2>
+      <p>To-do lists are notorious for collecting junk: to-do items that you want to remember, but are not very important and thus get consistently put-off. To address the problem of to-do list clutter, we created Blocitoff. </p>
+    </div>
+    <div class="col-md-4">
+      <h2>Don't Waste Time</h2>
+      <p>Blocitoff will aim to keep to-do lists manageable by automatically deleting to-do items that have not been completed after seven days. The hypothesis is that if the to-do item is not important enough to be completed in seven days, it doesn't belong on your to-do list. </p>
+      <p>
+    </div>
+    <div class="col-md-4">
+      <h2>Plus</h2>
+      <p>We will be happy if you use Bloccitoff...</p>
+    </div>
+  </div>
+</div>
