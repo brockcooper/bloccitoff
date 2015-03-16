@@ -22,6 +22,7 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'newrelic_rpm'
 gem 'puma'
 
+
 group :doc do
   gem 'sdoc', require: false
 end
@@ -29,6 +30,7 @@ end
  group :production do
    gem 'pg'
    gem 'rails_12factor'
+
  end
  
  group :development do
@@ -36,6 +38,7 @@ end
    gem 'sqlite3'
    gem 'rails-erd', github: 'ready4god2513/rails-erd', branch: 'rails-4.2-support-fix'
  end
+
 
 group :development, :test do
   gem 'byebug'
