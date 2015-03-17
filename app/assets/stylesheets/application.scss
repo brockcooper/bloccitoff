@@ -1,2 +1,11 @@
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#main-jumbotron{
+  margin-top: -20px;
+  width: 100%;
+}
+
+.login-blurb{
+  color: white;
+}
