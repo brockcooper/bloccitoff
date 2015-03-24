@@ -1,0 +1,18 @@
+<div class="row">
+   <div class="col-md-8">
+     <div class="media">
+       <div class="media-body">
+         <h2 class="media-heading">
+         <%= gravatar_for @user %>
+          <%= @user.username %>
+          </h2>
+           <%= @user.email %>
+           <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
+       </div>
+     </div>
+   </div>
+ </div>
+ <hr>
+ <h2 class="media-heading">To Do Lists</h2>
+ <%= link_to "Create New List", "", class: "btn btn-success btn-md", role: "button"  %>
+ <p>Enter index of lists here</p>
