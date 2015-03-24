@@ -23,7 +23,8 @@
           
           <% if current_user %>
             <form class="navbar-form navbar-right login-blurb">
-              Hello, <%= current_user.username %>!
+              <%= gravatar_for current_user %>
+              Hello, <%= link_to current_user.username, current_user, class: "removeLinkFormat" %>!
               <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
             </form>
           <% else %>
