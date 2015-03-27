@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+  $(".new-list-button").click(function(){
+    $('.create-new-list-form').fadeToggle("slow", "linear");
+  });
