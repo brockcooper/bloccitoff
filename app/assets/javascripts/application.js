@@ -16,6 +16,10 @@
 //= require bootstrap
 //= require_tree .
 
-  $(".new-list-button").click(function(){
-    $('.create-new-list-form').fadeToggle("slow", "linear");
+
+   $(".new-list-button").on('click', function(e){
+    e.stopPropagation();
+    $('.create-new-list-form').fadeToggle("fast");
   });
+
+ 
