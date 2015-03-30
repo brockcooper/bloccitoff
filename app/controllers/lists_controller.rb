@@ -1,6 +1,8 @@
 class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
+    @todos = @list.todos
+    @todo = Todo.new
   end
 
   # Post Request
@@ -19,4 +21,4 @@ class ListsController < ApplicationController
   def list_params
     params.require(:list).permit(:title, :description, :category)
   end
-end
+end 

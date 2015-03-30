@@ -8,18 +8,20 @@ class TodosController < ApplicationController
   end
 
   def create
+    @list = List.find_by(todo_params[:list_id])
     @todo = Todo.new(todo_params)
+    @todo.list = @list
     if @todo.save
-      redirect_to @todo, notice: 'Your new TODO was saved'
+      redirect_to @todo.list, notice: 'Your new Todo was saved'
     else
       flash[:notice] = 'There was an error saving your TODO'
-      redirect_to new_todo_path
+      redirect_to @todo.list
     end
   end
 
   private
 
   def todo_params
-    params.require(:todo).permit(:description)
+    params.require(:todo).permit(:description, :list_id)
   end
 end
