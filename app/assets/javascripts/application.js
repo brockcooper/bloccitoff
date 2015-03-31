@@ -17,9 +17,12 @@
 //= require_tree .
 
 
-   $(".new-list-button").on('click', function(e){
-    e.stopPropagation();
-    $('.create-new-list-form').fadeToggle("fast");
-  });
+$(".new-list-button").on('click', function(){
+  $('.create-new-list-form').fadeToggle("fast");
+});
 
- 
+ $(".list-group-item").on('click', function(e){
+    e.stopPropagation();
+    $(this).toggleClass('disabled');
+    
+ });
