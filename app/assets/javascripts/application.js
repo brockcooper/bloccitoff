@@ -21,8 +21,13 @@ $(".new-list-button").on('click', function(){
   $('.create-new-list-form').fadeToggle("fast");
 });
 
- $(".list-group-item").on('click', function(e){
-    e.stopPropagation();
+ $(".list-group-item").on('click', function(){
+
     $(this).toggleClass('disabled');
+    if ($('.list-group').find('.disabled')) {
+      $('.delete-todo-button').show();
+    } else {
+      $('.delete-todo-button').hide();
+    };
     
  });
