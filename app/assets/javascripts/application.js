@@ -18,13 +18,15 @@
 
 
 $(".new-list-button").on('click', function(){
-  $('.create-new-list-form').fadeToggle("fast");
+  setTimeout(function() {
+    $('.create-new-list-form').fadeToggle("fast");
+  }, 0);
 });
 
  $(".list-group-item").on('click', function(){
 
     $(this).toggleClass('disabled');
-    if ($('.list-group').find('.disabled')) {
+    if ($('.list-group').find('.disabled').length > 0) {
       $('.delete-todo-button').show();
     } else {
       $('.delete-todo-button').hide();

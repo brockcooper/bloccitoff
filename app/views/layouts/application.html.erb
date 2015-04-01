@@ -19,14 +19,16 @@
           </button>
           <%= link_to "Bloccitoff", welcome_index_path, class: "navbar-brand"  %>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          
+
+        
           <% if current_user %>
+            <%= link_to "My Lists", user_path(current_user), class: "navbar-text" %>
             <form class="navbar-form navbar-right login-blurb">
               <%= gravatar_for current_user %>
               Hello, <%= link_to current_user.username, current_user, class: "removeLinkFormat" %>!
               <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
             </form>
+
           <% else %>
             <%= form_for(:user, url: session_path(:user), html: {class: "navbar-form navbar-right"}) do |f| %>
                <div class="form-group">
@@ -38,7 +40,7 @@
               <%= f.submit "Sign in", class: 'btn btn-success' %>
             <% end %>
           <% end %>
-          </div><!--/.navbar-collapse -->
+        
         </div>
       </nav>
 

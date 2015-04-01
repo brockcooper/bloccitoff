@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <h4 class="media-heading">
+    <% @todos.each do |todo| %>
+      <a href="#" class="list-group-item"><%= todo.description %></a>
+    <% end %>
+  </h4>
+</ul>
