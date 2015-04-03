@@ -24,8 +24,10 @@ $(".new-list-button").on('click', function(){
 });
 
  $(".list-group-item").on('click', function(){
-
+    var $checkbox = $(this).find(':checkbox');
+    $checkbox.prop('checked', !$checkbox[0].checked);
     $(this).toggleClass('disabled');
+
     if ($('.list-group').find('.disabled').length > 0) {
       $('.delete-todo-button').show();
     } else {
