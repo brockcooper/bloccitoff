@@ -4,7 +4,11 @@
     <% @todos.each do |todo| %>
       <div class='list-group-item'>
         <%= check_box_tag 'todo_ids[]', todo.id, false, class: 'todo-check-box' %>
-        <%= todo.description%>
+        <%= todo.description %>
+        </br>
+        <small>
+          <%= "#{pluralize(todo.days_left, 'day')} remaining" %>
+        </small>
       </div>
     <% end %>
   </h4>

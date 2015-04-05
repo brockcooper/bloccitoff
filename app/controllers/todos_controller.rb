@@ -17,7 +17,7 @@ class TodosController < ApplicationController
     @list = Todo.find(@todos[0]).list
     @user = @list.user
     if Todo.where(id: @todos).destroy_all
-      redirect_to [current_user, List.first], notice: "Todos deleted successfully."
+      redirect_to [@user, @list], notice: "Todos deleted successfully."
     else
        redirect_to [@user, @list], error: "Todos could not be deleted. Please try again."
     end
