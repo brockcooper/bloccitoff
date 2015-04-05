@@ -15,6 +15,16 @@ class ListsController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
+  
+  def destroy
+    @list = List.find(params[:id])
+    @user = @list.user
+    if @list.destroy
+      redirect_to @user, notice: "List deleted successfully."
+    else
+       redirect_to @user, error: "List could not be deleted. Please try again."
+    end
+  end
 
   private
 

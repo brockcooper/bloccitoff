@@ -1,5 +1,5 @@
 class List < ActiveRecord::Base
   belongs_to :user
-  has_many :todos
+  has_many :todos, dependent: :destroy
   validates :title, length: { minimum: 5 }, presence: true
 end

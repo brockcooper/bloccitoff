@@ -5,7 +5,7 @@
         <%= link_to list.title, [@user, list] %>
       </h4>
       <small>
-      <%= list.description %>
+        <%= list.description %> | <%= link_to "Delete", list_path(list.id), method: :delete %>
       </small>
     </div>
   </div>
