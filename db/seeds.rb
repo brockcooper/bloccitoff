@@ -44,7 +44,7 @@ admin.save!
 # Create Brock
 brock = User.new(
   username:  'brock',
-  email:    'brockcooper@example.com',
+  email:    'brockcooper@gmail.com',
   password: 'helloworld'
 )
 brock.skip_confirmation!
