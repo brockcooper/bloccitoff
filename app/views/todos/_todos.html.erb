@@ -2,7 +2,7 @@
 <ul class="list-group">
   <h4 class="media-heading">
     <% @todos.each do |todo| %>
-      <div class='list-group-item'>
+      <div class='list-group-item' id="todo-<%= todo.id %>" >
         <%= check_box_tag 'todo_ids[]', todo.id, false, class: 'todo-check-box' %>
         <%= todo.description %>
         </br>

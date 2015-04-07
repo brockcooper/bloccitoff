@@ -9,9 +9,10 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.build( list_params )
     if @list.save
+      @message = "List was created successfully."
       redirect_to user_path(current_user), notice: "List was created successfully."
     else
-      flash[:error] = "Error creating topic. Please try again."
+      @message = "Error creating topic. Please try again."
       redirect_to user_path(current_user)
     end
   end

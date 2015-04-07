@@ -1,5 +1,5 @@
 <% if @list.destroyed? %>
-    $('#list-' +<%= @list.id %>).fadeOut(2000);
+    $('#list-' +<%= @list.id %>).fadeOut(1000);
     $('#list-' +<%= @list.id %>).prepend("<div class='alert alert-success'><%= @message %></div>");
  <% else %>
    $('#list-' +<%= @list.id %>).prepend("<div class='alert alert-danger'><%= @message %></div>");
