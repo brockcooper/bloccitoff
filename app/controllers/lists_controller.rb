@@ -20,11 +20,17 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @user = @list.user
     if @list.destroy
-      redirect_to @user, notice: "List deleted successfully."
+      @message = "List deleted successfully."
     else
-       redirect_to @user, error: "List could not be deleted. Please try again."
+      @message = "List could not be deleted. Please try again."
+    end
+    
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
+  
 
   private
 
