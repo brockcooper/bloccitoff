@@ -21,6 +21,7 @@ gem 'fog'
 gem 'will_paginate', '~> 3.0.5'
 gem 'newrelic_rpm'
 gem 'puma'
+gem 'whenever', :require => false
 
 
 group :doc do
