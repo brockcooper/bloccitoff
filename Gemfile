@@ -22,7 +22,7 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'newrelic_rpm'
 gem 'puma'
 gem 'whenever', :require => false
-gem 'active_model_serializers', '0.9.2'
+gem 'active_model_serializers', '0.8'
 
 
 group :doc do
