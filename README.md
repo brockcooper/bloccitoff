@@ -1,5 +1,5 @@
 # Open Todo
----
+
 
 To-do lists are notorious for collecting junk: to-do items that you want to remember, but are not very important and thus get consistently put-off. To address the problem of to-do list clutter, we created Open Todo. 
 
@@ -9,7 +9,7 @@ Check Out Deployed version: https://pacific-shore-4000.herokuapp.com/
 
 
 ## API usage:
----
+
 
 <b>Create new user</b>:
 
