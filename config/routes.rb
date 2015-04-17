@@ -11,11 +11,11 @@ Rails.application.routes.draw do
       resources :lists
     end
 
-    resources :lists, only: [] do
-      resources :items, only: [:create]
+    resources :lists do
+      resources :todos, only: [:create]
     end
 
-    resources :items, only: [:destroy]
+    resources :todos, only: [:destroy]
   end
 
 
