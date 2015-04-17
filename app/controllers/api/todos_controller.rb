@@ -4,6 +4,7 @@ class Api::TodosController < ApiController
   def create
     # Example request:
     # curl -u user@example.com:password -d "todo[description]=Dance if you want to" http://localhost:3000/api/lists/1/items
+    # email and password credentials must be owner of the list to create todos for that list
     @list = List.find(params[:list_id])
     @todo = Todo.new(todo_params)
     @todo.list = @list

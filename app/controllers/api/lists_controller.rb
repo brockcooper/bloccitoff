@@ -3,7 +3,8 @@ class Api::ListsController < ApiController
 
   def create
     # Example request:
-    # curl -u user@example.com:password -d "list[title]=Things to do today" -d "list[description]=Get these done before the end of day" http://localhost:3000/api/lists
+    # curl -u user@example.com:password -d "list[title]=Things to do today" -d "list[description]=Get these done before the end of day" http://localhost:3000/api/users/1/lists
+    # email and password credentials must match the Id of the user id in the HTTP request
     
     @user = get_user
 
