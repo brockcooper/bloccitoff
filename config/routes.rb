@@ -5,6 +5,21 @@ Rails.application.routes.draw do
       resources :todos, only: [:create, :destroy] 
     end
   end
+
+  namespace :api, defaults: { format: :json} do
+    resources :users do 
+      resources :lists
+    end
+
+    resources :lists do
+      resources :todos, only: [:create]
+    end
+
+    resources :todos, only: [:destroy]
+  end
+
+
+
   get 'welcome/index'
   get 'welcome/about'
 
