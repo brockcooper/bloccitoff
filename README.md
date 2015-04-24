@@ -32,8 +32,31 @@ curl -u user@example.com:password -d "list[title]=Things to do today" -d "list[d
 * Email and password credentials must be owner of the list to create todos for that list id in the HTTP request
 
 ```bash
-curl -u user@example.com:password -d "todo[description]=Dance if you want to" http://localhost:3000/api/lists/1/items
+curl -u user@example.com:password -d "todo[description]=Dance if you want to" http://localhost:3000/api/lists/1/todos
 ```
 
+---
+
+<b>Delete user</b>:
+
+* User will be required to authenicate their sign-up through email and can only delete their own account
+
+```bash
+curl -u user@example.com:password -X DELETE http://localhost:3000/api/users/1
+```
+<b>Delete List</b>:
+
+* Email and password credentials must match the Id of the user id in the HTTP request
+
+```bash
+curl -u user@example.com:password -X DELETE http://localhost:3000/api/users/1/lists/1
+```
+<b>Delete Todo</b>:
+
+* Email and password credentials must be owner of the list to create todos for that list id in the HTTP request
+
+```bash
+curl -u user@example.com:password -X DELETE http://localhost:3000/api/todos/1
+```
 
 
