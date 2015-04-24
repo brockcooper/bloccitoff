@@ -11,7 +11,7 @@ Check Out Deployed version: https://pacific-shore-4000.herokuapp.com/
 ## API usage:
 
 
-<b>Create new user</b>:
+<b>Create New User</b>:
 
 * New user will be required to authenicate their sign-up through email
 
@@ -37,7 +37,7 @@ curl -u user@example.com:password -d "todo[description]=Dance if you want to" ht
 
 ---
 
-<b>Delete user</b>:
+<b>Delete User</b>:
 
 * User will be required to authenicate their sign-up through email and can only delete their own account
 
