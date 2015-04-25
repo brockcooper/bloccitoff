@@ -59,4 +59,24 @@ curl -u user@example.com:password -X DELETE http://localhost:3000/api/users/1/li
 curl -u user@example.com:password -X DELETE http://localhost:3000/api/todos/1
 ```
 
+---
+
+<b>Update List</b>:
+
+* Email and password credentials must match the Id of the user id in the HTTP request
+
+```bash
+curl -X PUT -u user@example.com:password -d "list[description]=This is my first list" http://localhost:3000/api/users/1/lists/1
+
+curl -X PUT -u user@example.com:password -d "list[permissions]=This is my first list" http://localhost:3000/api/users/1/lists/1
+```
+<b>Update Todo</b>:
+
+* Email and password credentials must be owner of the list to create todos for that list id in the HTTP request
+
+```bash
+curl -X PUT -u user@example.com:password -d "todo[if_complete]=0" http://localhost:3000/api/todos/1
+
+curl -X PUT -u user@example.com:password -d "todo[description]=Change My Todo Title" http://localhost:3000/api/todos/1
+```
 

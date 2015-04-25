@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328151238) do
+ActiveRecord::Schema.define(version: 20150425215410) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
     t.string   "category"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "permissions", default: "private"
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"
@@ -27,8 +28,9 @@ ActiveRecord::Schema.define(version: 20150328151238) do
   create_table "todos", force: :cascade do |t|
     t.string   "description"
     t.integer  "list_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "if_complete", default: false
   end
 
   add_index "todos", ["list_id"], name: "index_todos_on_list_id"

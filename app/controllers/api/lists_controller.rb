@@ -27,6 +27,19 @@ class Api::ListsController < ApiController
     end
   end
 
+  def update
+    begin
+      list = List.find(params[:id])
+      if list.update(list_params)
+        render json: list.to_json
+      else
+        render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
+      end
+    rescue ActiveRecord::RecordNotFound
+      render :json => { errors: "List not found. Command failed."}, :status => :not_found
+    end
+  end
+
   private
   def list_params
     params.require(:list).permit(:title, :description)

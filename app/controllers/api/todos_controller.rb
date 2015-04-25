@@ -26,9 +26,22 @@ class Api::TodosController < ApiController
     end
   end
 
+  def update
+    begin
+      @todo = Todo.find(params[:id])
+      if @todo.update(todo_params)
+        render json: @todo.to_json
+      else
+        render json: { errors: @todo.errors.full_messages }, status: :unprocessable_entity
+      end
+    rescue ActiveRecord::RecordNotFound
+      render :json => { errors: "Todo not found. Command failed."}, :status => :not_found
+    end
+  end
+
   private
   def todo_params
-    params.require(:todo).permit(:description)
+    params.require(:todo).permit(:description, :if_complete)
   end
 
   def correct_user_params?
