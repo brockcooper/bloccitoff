@@ -80,3 +80,26 @@ curl -X PUT -u user@example.com:password -d "todo[if_complete]=0" http://localho
 curl -X PUT -u user@example.com:password -d "todo[description]=Change My Todo Title" http://localhost:3000/api/todos/1
 ```
 
+---
+
+<b>Index of Users</b>:
+
+```bash
+curl -X GET -u user@example.com:password http://localhost:3000/api/users
+```
+
+<b>Index of Lists</b>:
+
+* Email and password credentials must match the Id of the user id in the HTTP request
+
+```bash
+curl -X GET -u user@example.com:password http://localhost:3000/api/users
+```
+
+<b>Index of Todos for a List</b>:
+
+* Email and password credentials must be owner of the list to create todos for that list id in the HTTP request
+
+```bash
+curl -X GET -u user@example.com:password http://localhost:3000/api/lists/1/todos
+```

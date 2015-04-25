@@ -1,6 +1,21 @@
 class Api::TodosController < ApiController
   before_action :authenticated?, :compare_users
 
+  def index
+    begin
+      if params[:list_id]
+        @list = List.find(params[:list_id])
+      else
+        @todo = Todo.find(params[:id])
+        @list = List.find(@todo.list_id)
+      end
+      @todos = @list.todos.all.where(if_complete: false)
+      render json: @todos, each_serializer: TodoSerializer
+    rescue ActiveRecord::RecordNotFound
+      render :json => { errors: "Record not found. Command failed."}, :status => :not_found
+    end
+  end
+
   def create
     # Example request:
     # curl -u user@example.com:password -d "todo[description]=Dance if you want to" http://localhost:3000/api/lists/1/todos

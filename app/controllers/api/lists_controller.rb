@@ -1,6 +1,12 @@
 class Api::ListsController < ApiController
   before_action :authenticated?, :compare_users
 
+  def index
+    @user = User.find(params[:user_id])
+    @lists = @user.lists.all
+    render json: @lists, each_serializer: ListSerializer
+  end
+
   def create
     # Example request:
     # curl -u user@example.com:password -d "list[title]=Things to do today" -d "list[description]=Get these done before the end of day" http://localhost:3000/api/users/1/lists

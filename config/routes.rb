@@ -12,10 +12,10 @@ Rails.application.routes.draw do
     end
 
     resources :lists do
-      resources :todos, only: [:create, :update]
+      resources :todos
     end
 
-    resources :todos, only: [:destroy, :update]
+    resources :todos
   end
 
 
