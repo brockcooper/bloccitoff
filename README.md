@@ -10,7 +10,6 @@ Check Out Deployed version: https://pacific-shore-4000.herokuapp.com/
 
 ## API usage:
 
-
 <b>Create New User</b>:
 
 * New user will be required to authenicate their sign-up through email
@@ -75,7 +74,7 @@ curl -X PUT -u user@example.com:password -d "list[permissions]=This is my first 
 * Email and password credentials must be owner of the list to create todos for that list id in the HTTP request
 
 ```bash
-curl -X PUT -u user@example.com:password -d "todo[if_complete]=0" http://localhost:3000/api/todos/1
+curl -X PUT -u user@example.com:password -d "todo[if_complete]=1" http://localhost:3000/api/todos/1
 
 curl -X PUT -u user@example.com:password -d "todo[description]=Change My Todo Title" http://localhost:3000/api/todos/1
 ```
@@ -102,4 +101,14 @@ curl -X GET -u user@example.com:password http://localhost:3000/api/users
 
 ```bash
 curl -X GET -u user@example.com:password http://localhost:3000/api/lists/1/todos
+```
+
+---
+
+<b>Note about production vs local environment</b>:
+
+* All the above examples included the URL of http://localhost:3000 for each request. This can be replaced with your production URL or if you use my deployed Open Todo version then replace http://localhost:3000 with https://pacific-shore-4000.herokuapp.com such as the example below:
+
+```bash
+curl -X PUT -u user@example.com:password -d "todo[if_complete]=1" https://pacific-shore-4000.herokuapp.com/api/todos/1
 ```
