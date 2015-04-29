@@ -15,7 +15,7 @@ Check Out Deployed version: https://pacific-shore-4000.herokuapp.com/
 * New user will be required to authenicate their sign-up through email
 
 ```bash
-curl -u user@example.com:password -d "user[username]=Sterling" -d "user[email]=user2@example.com" -d "user[password]=Archer" http://localhost:3000/api/users/
+curl -u user@example.com:password -d "user[username]=MyUsername" -d "user[email]=user2@example.com" -d "user[password]=Password123" http://localhost:3000/api/users/
 ```
 
 <b>Create List</b>:
