@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
-    @todos = @list.todos
+    @todos = @list.todos.where(if_complete: false)
     @todo = Todo.new
   end
 

@@ -11,7 +11,7 @@ Check Out Deployed version: https://pacific-shore-4000.herokuapp.com/
 ## API usage:
 
 
-<b>Create new user</b>:
+<b>Create New User</b>:
 
 * New user will be required to authenicate their sign-up through email
 
@@ -32,8 +32,74 @@ curl -u user@example.com:password -d "list[title]=Things to do today" -d "list[d
 * Email and password credentials must be owner of the list to create todos for that list id in the HTTP request
 
 ```bash
-curl -u user@example.com:password -d "todo[description]=Dance if you want to" http://localhost:3000/api/lists/1/items
+curl -u user@example.com:password -d "todo[description]=Dance if you want to" http://localhost:3000/api/lists/1/todos
 ```
 
+---
 
+<b>Delete User</b>:
 
+* User will be required to authenicate their sign-up through email and can only delete their own account
+
+```bash
+curl -u user@example.com:password -X DELETE http://localhost:3000/api/users/1
+```
+<b>Delete List</b>:
+
+* Email and password credentials must match the Id of the user id in the HTTP request
+
+```bash
+curl -u user@example.com:password -X DELETE http://localhost:3000/api/users/1/lists/1
+```
+<b>Delete Todo</b>:
+
+* Email and password credentials must be owner of the list to create todos for that list id in the HTTP request
+
+```bash
+curl -u user@example.com:password -X DELETE http://localhost:3000/api/todos/1
+```
+
+---
+
+<b>Update List</b>:
+
+* Email and password credentials must match the Id of the user id in the HTTP request
+
+```bash
+curl -X PUT -u user@example.com:password -d "list[description]=This is my first list" http://localhost:3000/api/users/1/lists/1
+
+curl -X PUT -u user@example.com:password -d "list[permissions]=This is my first list" http://localhost:3000/api/users/1/lists/1
+```
+<b>Update Todo</b>:
+
+* Email and password credentials must be owner of the list to create todos for that list id in the HTTP request
+
+```bash
+curl -X PUT -u user@example.com:password -d "todo[if_complete]=0" http://localhost:3000/api/todos/1
+
+curl -X PUT -u user@example.com:password -d "todo[description]=Change My Todo Title" http://localhost:3000/api/todos/1
+```
+
+---
+
+<b>Index of Users</b>:
+
+```bash
+curl -X GET -u user@example.com:password http://localhost:3000/api/users
+```
+
+<b>Index of Lists</b>:
+
+* Email and password credentials must match the Id of the user id in the HTTP request
+
+```bash
+curl -X GET -u user@example.com:password http://localhost:3000/api/users
+```
+
+<b>Index of Todos for a List</b>:
+
+* Email and password credentials must be owner of the list to create todos for that list id in the HTTP request
+
+```bash
+curl -X GET -u user@example.com:password http://localhost:3000/api/lists/1/todos
+```

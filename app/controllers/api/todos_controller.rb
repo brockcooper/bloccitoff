@@ -1,9 +1,24 @@
 class Api::TodosController < ApiController
   before_action :authenticated?, :compare_users
 
+  def index
+    begin
+      if params[:list_id]
+        @list = List.find(params[:list_id])
+      else
+        @todo = Todo.find(params[:id])
+        @list = List.find(@todo.list_id)
+      end
+      @todos = @list.todos.all.where(if_complete: false)
+      render json: @todos, each_serializer: TodoSerializer
+    rescue ActiveRecord::RecordNotFound
+      render :json => { errors: "Record not found. Command failed."}, :status => :not_found
+    end
+  end
+
   def create
     # Example request:
-    # curl -u user@example.com:password -d "todo[description]=Dance if you want to" http://localhost:3000/api/lists/1/items
+    # curl -u user@example.com:password -d "todo[description]=Dance if you want to" http://localhost:3000/api/lists/1/todos
     # email and password credentials must be owner of the list to create todos for that list
     @list = List.find(params[:list_id])
     @todo = Todo.new(todo_params)
@@ -16,21 +31,47 @@ class Api::TodosController < ApiController
     end
   end
 
+  def destroy
+    begin
+      @todo = Todo.find(params[:id])
+      @todo.destroy
+      render json: { message: "HTTP 204 No Content. Todo deleted Successfully"}, status: :no_content
+    rescue ActiveRecord::RecordNotFound
+      render :json => { errors: "Todo not found. Command failed."}, :status => :not_found
+    end
+  end
+
+  def update
+    begin
+      @todo = Todo.find(params[:id])
+      if @todo.update(todo_params)
+        render json: @todo.to_json
+      else
+        render json: { errors: @todo.errors.full_messages }, status: :unprocessable_entity
+      end
+    rescue ActiveRecord::RecordNotFound
+      render :json => { errors: "Todo not found. Command failed."}, :status => :not_found
+    end
+  end
+
   private
   def todo_params
-    params.require(:todo).permit(:description)
+    params.require(:todo).permit(:description, :if_complete)
   end
 
   def correct_user_params?
-    @list = List.find(params[:list_id])
-    @user_param = @list.user
-    @user_email = get_user
-    @user_param == @user_email
-  end
-
-  def compare_users
-    unless correct_user_params?
-      render json: { errors: "Unautorized access: List owner in HTTP request does not match email credentials" }, status: :unprocessable_entity
+    begin
+      if params[:list_id]
+        @list = List.find(params[:list_id])
+      else
+        @todo = Todo.find(params[:id])
+        @list = List.find(@todo.list_id)
+      end
+      @user_param = @list.user
+      @user_email = get_user
+      @user_param == @user_email
+    rescue ActiveRecord::RecordNotFound
+      render :json => { errors: "User not found. Command failed."}, :status => :not_found
     end
   end
 
